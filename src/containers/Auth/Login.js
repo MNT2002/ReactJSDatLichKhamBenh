@@ -7,7 +7,7 @@ import * as actions from "../../store/actions";
 
 import './Login.scss';
 import { FormattedMessage } from 'react-intl';
-
+import { handleLogin }  from '../../services/userService'
 
 
 class Login extends Component {
@@ -16,7 +16,8 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
-            isShowPassword: false
+            isShowPassword: false,
+            errMeassage: '',
         }
     }
 
@@ -32,8 +33,30 @@ class Login extends Component {
         })
     }
 
-    handleLogin = () => {
-        console.log(this.state.username, this.state.password)
+    handleLogin = async () => {
+        this.setState({
+            errMeassage: ''
+        })
+        // console.log(this.state.username, this.state.password)
+        try {
+            let data = await handleLogin(this.state.username, this.state.password)  
+            if(data && data.errCode !== 0) {
+                this.setState({
+                    errMeassage: data.message
+                })
+            }
+            if(data && data.errCode === 0) {
+                this.props.userLoginSuccess(data.user)
+            }
+        } catch (error) {
+            if(error.response) {
+                if(error.response.data) {
+                    this.setState({
+                        errMeassage: error.response.data.message
+                    })
+                }
+            }
+        }
     }
 
     handleShowHidePassword = () => {
@@ -67,6 +90,7 @@ class Login extends Component {
                                 </span>
                             </div>
                         </div>
+                        <div className='col-12' style={{ color: 'red' }}>{ this.state.errMeassage }</div>
                         <div className="col-12">
                             <button className="btn-login"
                                 onClick={() => this.handleLogin()}
@@ -98,8 +122,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
-        adminLoginSuccess: (adminInfo) => dispatch(actions.adminLoginSuccess(adminInfo)),
-        adminLoginFail: () => dispatch(actions.adminLoginFail()),
+        
+        userLoginSuccess: (userInfor) => dispatch(actions.userLoginSuccess(userInfor))
     };
 };
 
