@@ -1,4 +1,27 @@
 {
+    "homeheader": {
+        "empty": " ",
+        "speciality": "Medical specialty",
+        "searchdoctor": "find a doctor by specialty",
+        "healthfacility": "Health facilities",
+        "selectroom": "Choose hospital clinic",
+        "doctor": "Doctor",
+        "selectdoctor": "Choose a good doctor",
+        "fee": "Examination package",
+        "checkhealth": "General health check",
+        "support": "Support",
+        "title1": "Medical backgournd",
+        "title2": "Comprehensive health care",
+        "examination": "Examination",
+        "specialist": "specialist",
+        "general": "general",
+        "telemedicine": "Telemedicine",
+        "dentalcheckup": "Dental check-up",
+        "tests": "Tests",
+        "medical": "medical",
+        "health": "Health",
+        "mental": "mental"
+    },
     "common": {
         "add": "Add",
         "edit": "Edit",
