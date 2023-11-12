@@ -27,7 +27,7 @@ class HomeHeader extends Component {
                         </div>
                         <div className='center-content'>
                             <div className='child-content'>
-                                <div><b><FormattedMessage id='homeheader.speciality'/></b></div>
+                                <div><b><FormattedMessage id='homeheader.specialty'/></b></div>
                                 <div className='subs-title'><FormattedMessage id='homeheader.searchdoctor'/></div>
                             </div>
                             <div className='child-content'>
@@ -72,49 +72,49 @@ class HomeHeader extends Component {
                             <li>
                                 <a href='#'>
                                     <div className='option-image'></div>
-                                    <FormattedMessage id='homeheader.examination'/>
+                                    <FormattedMessage id='banner.examination'/>
                                     <br />
-                                    <FormattedMessage id='homeheader.specialist'/>
+                                    <FormattedMessage id='banner.specialist'/>
                                 </a>
                             </li>
                             <li>
                                 <a href='#'>
                                     <div className='option-image'></div>
-                                    <FormattedMessage id='homeheader.empty'/>
+                                    {language === LANGUAGES.VI ? <FormattedMessage id='banner.examination'/> : <FormattedMessage id='banner.empty'/>}
                                     <br />
-                                    <FormattedMessage id='homeheader.telemedicine'/>
+                                    <FormattedMessage id='banner.telemedicine'/>
                                 </a>
                             </li>
                             <li>
                                 <a href='#'>
                                     <div className='option-image'></div>
-                                    <FormattedMessage id='homeheader.examination'/>
+                                    <FormattedMessage id='banner.examination'/>
                                     <br />
-                                    <FormattedMessage id='homeheader.general'/>
+                                    <FormattedMessage id='banner.general'/>
                                 </a>
                             </li>
                             <li>
                                 <a href='#'>
                                     <div className='option-image'></div>
-                                    <FormattedMessage id='homeheader.tests'/>
+                                    <FormattedMessage id='banner.tests'/>
                                     <br />
-                                    <FormattedMessage id='homeheader.medical'/>
+                                    <FormattedMessage id='banner.medical'/>
                                 </a>
                             </li>
                             <li>
                                 <a href='#'>
                                     <div className='option-image'></div>
-                                    <FormattedMessage id='homeheader.health'/>
+                                    <FormattedMessage id='banner.health'/>
                                     <br />
-                                    <FormattedMessage id='homeheader.mental'/>
+                                    <FormattedMessage id='banner.mental'/>
                                 </a>
                             </li>
                             <li>
                                 <a href='#'>
                                     <div className='option-image'></div>
-                                    <FormattedMessage id='homeheader.empty'/>
+                                    {language === LANGUAGES.VI ? <FormattedMessage id='banner.examination'/> : <FormattedMessage id='banner.empty'/>}
                                     <br />
-                                    <FormattedMessage id='homeheader.dentalcheckup'/>
+                                    <FormattedMessage id='banner.dentalcheckup'/>
                                 </a>
                             </li>
                         </ul>
@@ -129,6 +129,7 @@ class HomeHeader extends Component {
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
+        userInfo: state.user.userInfo,
         language: state.app.language
     };
 };

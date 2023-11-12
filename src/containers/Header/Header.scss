@@ -8,16 +8,48 @@
     color: $common-text-color;
     height: 40px;
     position: relative;
-    .btn-logout {
-        color: $common-text-color;
-        line-height: 40px;
-        height: 40px;
-        padding: 0 10px;
-        &:hover {
-            background-color: darken($colormain, 5);
+
+    .content-left-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .languages {
+            line-height: 40px;
+            height: 40px;
+            margin-right: 16px;
+
+            .welcome {
+                margin-right: 20px;
+            }
+
+            .language-en,
+            .language-vi {
+                padding: 4px 6px;
+                cursor: pointer;
+                font-weight: bold;
+                opacity: 0.7;
+
+                &.active {
+                    opacity: 1;
+                    color: #FFC10E;
+                }
+            }
         }
-        i {
-            font-size: $base-size + 1px;
+
+        .btn-logout {
+            color: $common-text-color;
+            line-height: 40px;
+            height: 40px;
+            padding: 0 10px;
+
+            &:hover {
+                background-color: darken($colormain, 5);
+            }
+
+            i {
+                font-size: $base-size + 1px;
+            }
         }
     }
 }
