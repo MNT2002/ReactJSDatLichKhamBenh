@@ -1,5 +1,9 @@
 import actionTypes from './actionTypes';
-import { getAllCodeService } from '../../services/userService';
+import { getAllCodeService, createNewUserService, getAllUsers,
+     deleteUserService, editUserService, getTopDoctorHomeService } from '../../services/userService';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // export const fetchGenderStart = () => ({
 //     type: actionTypes.FETCH_GENDER_START
@@ -91,3 +95,137 @@ export const fetchRoleSuccess = (roleData) => ({
 export const fetchRoleFailed = () => ({
     type: actionTypes.FETCH_ROLE_FAILED,
 })
+
+export const createNewUser = (data) => {
+    return async(dispatch, getState) => {
+        try {
+            let res = await createNewUserService(data)
+            if (res && res.errCode === 0) {
+                toast.success("🦄 Create a new user succeed!")
+                dispatch(saveUserSuccess())
+                dispatch(fetchAllUserStart())
+            } else {
+                toast.error("🦄 Create a new user error!")
+                dispatch(saveUserFailed())
+            } 
+        } catch (error) {
+            toast.error("🦄 Create a new user error!")
+            dispatch(fetchRoleFailed())
+            console.log("saveUserFailed error", error)
+        }
+    }
+}
+export const saveUserSuccess = () => ({
+    type: actionTypes.CREATE_USER_SUCCESS
+})
+export const saveUserFailed = () => ({
+    type: actionTypes.CREATE_USER_FAILED
+})
+
+
+export const fetchAllUserStart = () => {
+    return async(dispatch, getState) => {
+        try {
+            let res = await getAllUsers("ALL")
+
+            if (res && res.errCode === 0) {
+                // console.log('check getState: ',getState())
+                dispatch(fetchAllUserSuccess(res.users.reverse()))
+                // console.log('check getState: ',getState())
+            } else {
+                toast.error("Fetch all user error!")
+                dispatch(fetchAllUserFailed())
+            }
+            
+        } catch (error) {
+            dispatch(fetchAllUserFailed())
+            console.log("fetchRoleFailed error", error)
+        }
+    }
+}
+
+export const fetchAllUserSuccess= (data) => ({
+    type: actionTypes.FETCH_ALL_USER_SUCCESS,
+    users: data
+})
+export const fetchAllUserFailed= () => ({
+    type: actionTypes.FETCH_ALL_USER_FAILED
+})
+
+export const deleteAUser = (userId) => {
+    return async(dispatch, getState) => {
+        try {
+            let res = await deleteUserService(userId)
+            if (res && res.errCode === 0) {
+                toast.success("🦄 Delete the user succeed!")
+                dispatch(deleteUserSuccess())
+                dispatch(fetchAllUserStart())
+            } else {
+                toast.error("🦄 Delete the user error!")
+                dispatch(deleteUserFailed())
+            } 
+        } catch (error) {
+            toast.error("🦄 Delete the user error!")
+            dispatch(deleteUserFailed())
+            console.log("saveUserFailed error", error)
+        }
+    }
+}
+
+export const deleteUserSuccess = () => ({
+    type: actionTypes.DELETE_USER_SUCCESS
+})
+export const deleteUserFailed = () => ({
+    type: actionTypes.DELETE_USER_FAILED
+})
+
+export const editAUser = (data) => {
+    return async(dispatch, getState) => {
+        try {
+            let res = await editUserService(data)
+            if (res && res.errCode === 0) {
+                toast.success("🦄 Update the user succeed!")
+                dispatch(editUserSuccess())
+                dispatch(fetchAllUserStart())
+            } else {
+                toast.error("🦄 update the user error!")
+                dispatch(editUserFailed())
+            } 
+        } catch (error) {
+            toast.error("🦄 Update the user error!")
+            dispatch(editUserFailed())
+            console.log("saveUserFailed error", error)
+        }
+    }
+}
+
+export const editUserSuccess = () => ({
+    type: actionTypes.EDIT_USER_SUCCESS
+})
+export const editUserFailed = () => ({
+    type: actionTypes.EDIT_USER_FAILED
+})
+
+
+export const fetchTopDoctor = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getTopDoctorHomeService('')
+            if (res && res.errCode === 0) {
+                dispatch({
+                    type: actionTypes.FETCH_TOP_DOCTORS_SUCCESS,
+                    dataDoctors: res.data
+                })
+            } else {
+                dispatch({
+                    type: actionTypes.FETCH_TOP_DOCTORS_FAILED,
+                }) 
+            }
+        } catch (error) {
+            console.log('FETCH_TOP_DOCTORS_FAILED: ', error)
+            dispatch({
+                type: actionTypes.FETCH_TOP_DOCTORS_FAILED,
+            }) 
+        }
+    }
+}

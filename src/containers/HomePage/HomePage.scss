@@ -35,6 +35,7 @@
                 background-repeat: no-repeat;
                 background-size: cover;
                 background-color: #eee;
+                border-radius: 50%;
 
                 &.specialty {
                     background-image: url('../../assets/images/specialty/112457-co-xuong-khop.jpg');
@@ -45,7 +46,7 @@
                 }
 
                 &.outstanding-doctor {
-                    background-image: url('../../assets/images/outstanding-doctor/092249-doctor-check.jpg');
+                    // background-image: url('../../assets/images/outstanding-doctor/092249-doctor-check.jpg');
                     width: 120px;
                     height: 120px;
 
@@ -143,6 +144,9 @@
     &:hover {
         background: #f7f4f4 !important;
     }
+}
+.slick-disabled {
+    display: none !important;
 }
 
 .section-about {
