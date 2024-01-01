@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import Slider from "react-slick"
 import * as actions from '../../../store/actions'
 import { LANGUAGES } from '../../../utils';
-
+import { withRouter } from 'react-router';
 class OutStandingDoctor extends Component {
 
     constructor(props) {
@@ -26,8 +26,15 @@ class OutStandingDoctor extends Component {
         this.props.loadTopDoctors()
     }
 
+    handleViewDetailDoctor = (doctor) => {
+        // console.log('view info: ', doctor)
+        if (this.props.history) {
+            this.props.history.push(`/detail-doctor/${doctor.id}`)
+        }
+    }
+
     render() {
-        console.log(this.props.topDoctorsRedux)
+        // console.log(this.props.topDoctorsRedux)
         let arrDoctors = this.state.arrDoctors
         let language = this.props.language
         // arrDoctors = arrDoctors.concat(arrDoctors).concat(arrDoctors)
@@ -36,7 +43,7 @@ class OutStandingDoctor extends Component {
                 <div className='section-container'>
                     <div className='section-header'>
                         <span className='title-section'><FormattedMessage id="homepage.outstanding-doctor" /></span>
-                        <button className='btn-section'><FormattedMessage id="homepage.more-infor"/></button>
+                        <button className='btn-section'><FormattedMessage id="homepage.more-infor" /></button>
                     </div>
                     <div className='section-body'>
                         <Slider {...this.props.settings}>
@@ -49,11 +56,11 @@ class OutStandingDoctor extends Component {
                                     let nameVi = `${item.positionData.valueVi} ${item.lastName} ${item.firstName}`
                                     let nameEn = `${item.positionData.valueEn} ${item.firstName} ${item.lastName}`
                                     return (
-                                        <div className='img-customize' key={index}>
+                                        <div className='img-customize' key={index} onClick={() => this.handleViewDetailDoctor(item)}>
                                             <div className='img-border'>
                                                 <div className='outer-bg'>
-                                                    <div className='bg-image outstanding-doctor' 
-                                                    style={{ backgroundImage: `url(${imageBase64})` }}
+                                                    <div className='bg-image outstanding-doctor'
+                                                        style={{ backgroundImage: `url(${imageBase64})` }}
                                                     ></div>
                                                 </div>
                                                 <div className='text-center'>
@@ -87,4 +94,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OutStandingDoctor);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(OutStandingDoctor));

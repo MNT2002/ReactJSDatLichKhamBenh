@@ -7,7 +7,7 @@ import * as actions from "../../store/actions";
 
 import './Login.scss';
 import { FormattedMessage } from 'react-intl';
-import { handleLogin }  from '../../services/userService'
+import { handleLogin } from '../../services/userService'
 
 
 class Login extends Component {
@@ -39,18 +39,18 @@ class Login extends Component {
         })
         // console.log(this.state.username, this.state.password)
         try {
-            let data = await handleLogin(this.state.username, this.state.password)  
-            if(data && data.errCode !== 0) {
+            let data = await handleLogin(this.state.username, this.state.password)
+            if (data && data.errCode !== 0) {
                 this.setState({
                     errMeassage: data.message
                 })
             }
-            if(data && data.errCode === 0) {
+            if (data && data.errCode === 0) {
                 this.props.userLoginSuccess(data.user)
             }
         } catch (error) {
-            if(error.response) {
-                if(error.response.data) {
+            if (error.response) {
+                if (error.response.data) {
                     this.setState({
                         errMeassage: error.response.data.message
                     })
@@ -64,6 +64,11 @@ class Login extends Component {
             isShowPassword: !this.state.isShowPassword
         })
     }
+    handleKeyDown = (e) => {
+        if(e.key === 'Enter' || e.keyCode === 13) {
+            this.handleLogin()
+        }
+    }
 
     render() {
         return (
@@ -76,6 +81,7 @@ class Login extends Component {
                             <input type="text" className="form-control" placeholder="Enter your username"
                                 value={this.state.username}
                                 onChange={(event) => this.handleOnChangeUsername(event)}
+                                onKeyDown={(e) => this.handleKeyDown(e)}
                             />
                         </div>
                         <div className="col-12 form-group login-input">
@@ -83,6 +89,7 @@ class Login extends Component {
                             <div className="custom-input-password">
                                 <input type={this.state.isShowPassword ? 'text' : 'password'} className="form-control" placeholder="Enter your password"
                                     onChange={(event) => this.handleOnChangePassword(event)}
+                                    onKeyDown={(e) => this.handleKeyDown(e)}
                                 />
                                 <span
                                     onClick={() => { this.handleShowHidePassword() }}>
@@ -90,11 +97,12 @@ class Login extends Component {
                                 </span>
                             </div>
                         </div>
-                        <div className='col-12' style={{ color: 'red' }}>{ this.state.errMeassage }</div>
+                        <div className='col-12' style={{ color: 'red' }}>{this.state.errMeassage}</div>
                         <div className="col-12">
                             <button className="btn-login"
                                 onClick={() => this.handleLogin()}
-                            >Login</button>
+                            >Login
+                            </button>
                         </div>
                         <div className="col-12">
                             <span className='forgot-password'>Forgot your password?</span>
@@ -122,7 +130,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
-        
+
         userLoginSuccess: (userInfor) => dispatch(actions.userLoginSuccess(userInfor))
     };
 };

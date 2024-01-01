@@ -1,0 +1,17 @@
+.manage-doctor-container{
+    box-sizing: border-box;
+    .manage-doctor-title{
+        margin-bottom: 20px;
+    }
+
+    .more-infor {
+        display: flex;
+    }
+    .content-left {
+        width: 40%;
+        padding: 0 15px;
+    }
+    .content-right {
+        width: 60%;
+    }
+}

@@ -7,12 +7,16 @@ const initialState = {
     positions: [],
     users: [],
     topDoctors: [],
+    allDoctors: [],
+    allScheduleTime: [],
+
+    allRequiredDoctorInfor: []
 }
 
 const adminReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.FETCH_GENDER_START:
-            let copyState = {...state}
+            let copyState = { ...state }
             copyState.isLoadingGender = true
             return {
                 ...copyState
@@ -67,6 +71,36 @@ const adminReducer = (state = initialState, action) => {
             }
         case actionTypes.FETCH_TOP_DOCTORS_FAILED:
             state.topDoctors = []
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_ALL_DOCTORS_SUCCESS:
+            state.allDoctors = action.dataDr
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_All_DOCTORS_FAILED:
+            state.allDoctors = []
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_SUCCESS:
+            state.allScheduleTime = action.dataTime;
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_FAILED:
+            state.allScheduleTime = [];
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_REQUIRED_DOCTOR_INFOR_SUCCESS:
+            state.allRequiredDoctorInfor = action.data;
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_REQUIRED_DOCTOR_INFOR_FAILED:
+            state.allRequiredDoctorInfor = [];
             return {
                 ...state,
             }

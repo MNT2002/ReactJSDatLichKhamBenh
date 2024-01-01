@@ -22,6 +22,7 @@
     .section-body {
         .img-customize {
             padding: 0 8px;
+            cursor: pointer;
 
             .img-border {
                 border: 1px solid #a3a0a042;
@@ -35,7 +36,6 @@
                 background-repeat: no-repeat;
                 background-size: cover;
                 background-color: #eee;
-                border-radius: 50%;
 
                 &.specialty {
                     background-image: url('../../assets/images/specialty/112457-co-xuong-khop.jpg');
@@ -49,7 +49,7 @@
                     // background-image: url('../../assets/images/outstanding-doctor/092249-doctor-check.jpg');
                     width: 120px;
                     height: 120px;
-
+                    border-radius: 50%;
                 }
 
                 &.handbook {
