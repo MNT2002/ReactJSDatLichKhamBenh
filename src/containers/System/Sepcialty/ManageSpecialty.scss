@@ -1,0 +1,23 @@
+.manage-specialty-container {
+    margin: 0 15px;
+    .ms-title {
+
+    }
+
+    .btn-save-specialty {
+        margin-bottom: 18px;
+
+        button {
+            min-width: 120px;
+            background-color: #FFC10E;
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+
+    .add-new-specialty {
+
+    }
+}

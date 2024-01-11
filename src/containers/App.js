@@ -22,6 +22,8 @@ import { CustomToastCloseButton } from '../components/CustomToast';
 import ConfirmModal from '../components/ConfirmModal';
 
 import CustomScrollbars from '../components/CustomScrollbars'
+import VerifyEmail from './Patient/VerifyEmail.js';
+import DetailSpecialty from './Patient/specialty/DetailSpecialty.js';
 class App extends Component {
 
     handlePersistorState = () => {
@@ -57,6 +59,9 @@ class App extends Component {
                                     <Route path={'/doctor'} component={userIsAuthenticated(Doctor)}/> 
                                     <Route path={path.HOMEPAGE} component={(HomePage)} />
                                     <Route path={path.DETAIL_DOCTOR} component={DetailDoctor}/> 
+                                    <Route path={path.DETAIL_SPECIALTY} component={DetailSpecialty}/> 
+                                    
+                                    <Route path={path.VERIFY_EMAIL_BOOKING} component={VerifyEmail}/> 
                                 </Switch>
                             </CustomScrollbars>
                         </div>

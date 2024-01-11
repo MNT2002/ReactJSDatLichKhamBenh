@@ -61,9 +61,9 @@
     },
     "homepage": {
         "outstanding-doctor": "Last week's featured doctor",
-        "more-infor": "More inforation"
+        "more-infor": "More inforation",
+        "specialty": "Popular specialties"
     },
-
     "manage-schedule": {
         "title": "Manage doctor's examination plan",
         "choose-doctor": "Choose doctor",
@@ -76,12 +76,33 @@
             "no-schedule": "The doctor does not have any appointment during this time",
             "choose": "Choose",
             "book-free": "and book (free)"
+        },
+        "extra-infor-doctor": {
+            "clinic-address": "Address of examination",
+            "price-number": "Examination price",
+            "pay-by": "Patients can pay the cost by",
+            "see-detail": "See details",
+            "hide-price-box": "Hide price list"
+        },
+        "booking-modal": {
+            "title": "Information on scheduling medical examinations",
+            "fullName": "Full name",
+            "phoneNumber": "Phone number",
+            "email": "Email",
+            "address": "Address",
+            "reason": "Reason for medical examination",
+            "birthday": "Day of birth",
+            "gender": "Gender",
+            "confirm": "Confirm",
+            "cancel": "Cancel",
+            "priceBooking": "Free booking",
+            "price": "Price"
         }
     },
     "admin": {
         "manage-doctor": {
             "title": "Create additional doctor information",
-            "select-doctor": "Select doctor",
+            "select-doctor": "Doctor",
             "intro": "Introduction",
             "add": "Create infor",
             "save": "Save infor",
@@ -90,7 +111,9 @@
             "province": "Province",
             "name-clinic": "Clinic's name",
             "address-clinic": "Clinic's address",
-            "note": "Noteú"
+            "note": "Note",
+            "specialty": "Specialty",
+            "clinic": "Clinic"
         }
     }
 }

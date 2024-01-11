@@ -1,0 +1,135 @@
+.detail-specialty-container {
+    background-color: #eee;
+    margin-bottom: 32px;
+
+    .description-specialty-wrapper {
+        width           : 100%;
+        background-color: #fff;
+
+        .description-specialty {
+            min-height: 160px;
+            min-width : 1000px;
+            max-width : 1200px;
+            background: #fff;
+            margin    : 26px auto 12px;
+
+            h1 {
+                font-size  : 24px;
+                font-weight: bold;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            p,
+            ul {
+                font-family: Montserrat, sans-serif !important;
+                font-size  : 14px;
+                line-height: 1.5 !important;
+            }
+        }
+    }
+
+    .search-sp-doctor {
+        min-width    : 1000px;
+        max-width    : 1200px;
+        margin       : 0 auto;
+        margin-bottom: 12px;
+
+        .select {
+            position     : relative;
+            display      : flex;
+            min-width: 160px;
+            max-width: 160px;
+            line-height  : 2;
+            background   : #fff;
+            overflow     : hidden;
+            border-radius: .25em;
+
+            &::after {
+                content           : '\25BC';
+                position          : absolute;
+                top               : 0;
+                right             : 0;
+                padding           : 0 1em;
+                background        : #3eb4c7;
+                cursor            : pointer;
+                pointer-events    : none;
+                -webkit-transition: .25s all ease;
+                -o-transition     : .25s all ease;
+                transition        : .25s all ease;
+                color             : white;
+            }
+        }
+
+        select {
+            -webkit-appearance: none;
+            -moz-appearance   : none;
+            -ms-appearance    : none;
+            appearance        : none;
+            outline           : 0;
+            box-shadow        : none;
+            border            : 0 !important;
+            background        : #45C3D6;
+            background-image  : none;
+            min-height        : 30px;
+            border-radius     : 2px;
+            flex   : 1;
+            padding: 0 .5em;
+            cursor : pointer;
+        }
+        /* thiết kế dấu mũi tên */
+        /* Transition */
+        .select:hover::after {
+            color: #256771;
+        }
+    }
+
+    .each-doctor {
+        display         : flex;
+        flex-basis      : auto;
+        flex-shrink     : 0;
+        min-width       : 1000px;
+        max-width       : 1200px;
+        min-height      : 300px;
+        margin          : 0 auto;
+        margin-bottom   : 12px;
+        padding         : 10px;
+        border          : 0 solid black;
+        box-sizing      : border-box;
+        background-color: #fff;
+        border-radius   : 8px;
+        box-shadow      : rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+        .dt-content-left {
+            width        : 50%;
+            border-right : 1px solid #eee;
+            padding-right: 14px;
+
+            .intro-doctor .content-left {
+                width : 90px !important;
+                height: 90px !important;
+            }
+            .profile-doctor {
+                width: 100%;
+            }
+        }
+
+        .dt-content-right {
+            width       : 50%;
+            margin-top  : 12px;
+            padding-left: 14px;
+
+            .doctor-schedule {
+                margin-bottom: 10px;
+            }
+
+            .doctor-extraInfor {
+                padding-top   : 10px;
+                padding-bottom: 10px;
+                border-top    : 1px solid #eee;
+            }
+        }
+    }
+}

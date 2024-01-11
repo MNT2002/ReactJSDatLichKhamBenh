@@ -15,7 +15,7 @@ class About extends Component {
                     </div>
                     <div className='section-about-content'>
                         <div className='content-left'>
-                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/M62l1xA5Eu8" title="Domain là gì? Bạn đã thật sự hiểu về domain?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/M62l1xA5Eu8" title="Domain là gì? Bạn đã thật sự hiểu về domain?" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                         </div>
                         <div className='content-right'>
                         Mình dự định sẽ làm 1 website với nội dung hỗ trợ việc đặt lịch khám bệnh bác sĩ, tương tự như website: https://bookingcare.vn/ . Trong khóa học này, mình sẽ clone (sao chép) lại giao diện Frontend và tự làm hoàn toàn phần Backend cũng như cơ sở dữ liệu của dự án.
